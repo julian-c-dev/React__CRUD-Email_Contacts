@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from "react";
 import AddContact from "./AddContact";
+
 import "./App.css";
 import ContactList from "./ContactList";
 import Header from "./Header";
 
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState([{ id: "", name: "", email: "" }]);
 
   const AddContactHandler = (name, email) => {
-    setContacts([...contacts, { name, email }]);
+    setContacts([
+      ...contacts,
+      { id: Math.floor(Math.random() * 100000), name, email },
+    ]);
+  };
+
+  const removeContactHandler = (id) => {
+    const newContactList = contacts.filter((contact) => {
+      return contact.id !== id;
+    });
+
+    setContacts(newContactList);
   };
 
   useEffect(() => {
@@ -29,7 +41,7 @@ function App() {
       <AddContact
         onAddButtonSubmit={(name, email) => AddContactHandler(name, email)}
       />
-      <ContactList contacts={contacts} />
+      <ContactList contacts={contacts} getContactId={removeContactHandler} />
     </div>
   );
 }
