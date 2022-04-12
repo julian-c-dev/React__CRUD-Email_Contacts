@@ -13,6 +13,13 @@ function App() {
   };
 
   useEffect(() => {
+    const retrieveContacts = JSON.parse(
+      localStorage.getItem(LOCAL_STORAGE_KEY)
+    );
+    if (retrieveContacts) setContacts(retrieveContacts);
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
   }, [contacts]);
 
