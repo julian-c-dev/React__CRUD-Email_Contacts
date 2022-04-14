@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 
 const AddContact = (props) => {
   const [name, setName] = useState("");
@@ -16,33 +17,35 @@ const AddContact = (props) => {
   };
 
   return (
-    <div className="ui main">
-      <h3>Add Contact</h3>
-      <form className="ui form" onSubmit={add}>
-        <div className="field">
-          <label>Name</label>
-          <input
+    <div className="card">
+      <h2 className="card-header">Add Contact</h2>
+      <Form onSubmit={add}>
+        <Form.Group className="card-body" controlId="formBasicName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
             type="text"
             name="name"
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-        </div>
-        <div className="field">
-          <label>Email</label>
-          <input
+        </Form.Group>
+        <Form.Group className=" card-body" controlId="formBasicEmail">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
             type="text"
             email="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
-        <button type="submit" className="ui button blue">
-          Add Contact
-        </button>
-      </form>
+        </Form.Group>
+        <Form.Group className=" card-body" controlId="formBasicButtons">
+          <Button variant="primary" type="submit">
+            Add Contact
+          </Button>
+        </Form.Group>
+      </Form>
     </div>
   );
 };

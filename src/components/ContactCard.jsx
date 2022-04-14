@@ -1,24 +1,34 @@
 import React from "react";
+import { ListGroup } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
+import "./ContactCard.css";
 
 const ContactCard = (props) => {
   const { id, name, email } = props.contact;
   return (
-    <div className="item">
+    <ListGroup.Item
+      as="li"
+      className="d-flex justify-content-start align-items-center"
+    >
       <img
-        className="ui avatar image"
+        className="avatar"
         src={"https://i.pravatar.cc/150?u=julian_cantera"}
         alt="avatar"
       />
-      <div className="content">
-        <div className="header">{name}</div>
+      <div className="ms-4 me-auto">
+        <div className="fw-bold">{name}</div>
         <div>{email}</div>
       </div>
-      <i
-        className="trash alternate outline icon right"
-        style={{ color: "red", margin: "5px" }}
-        onClick={() => props.clickHandler(id)}
-      ></i>
-    </div>
+      <div>
+        <FontAwesomeIcon
+          icon={faTrash}
+          style={{ color: "red", cursor: "pointer" }}
+          onClick={() => props.clickHandler(id)}
+        />
+      </div>
+    </ListGroup.Item>
   );
 };
 

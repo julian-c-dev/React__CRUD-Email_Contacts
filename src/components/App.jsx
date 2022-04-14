@@ -9,7 +9,7 @@ function App() {
   const LOCAL_STORAGE_KEY = "contacts";
   const [contacts, setContacts] = useState([{ id: "", name: "", email: "" }]);
 
-  const AddContactHandler = (name, email) => {
+  const addContactHandler = (name, email) => {
     setContacts([
       ...contacts,
       { id: Math.floor(Math.random() * 100000), name, email },
@@ -36,10 +36,10 @@ function App() {
   }, [contacts]);
 
   return (
-    <div className="ui container">
+    <div className="container">
       <Header />
       <AddContact
-        onAddButtonSubmit={(name, email) => AddContactHandler(name, email)}
+        onAddButtonSubmit={(name, email) => addContactHandler(name, email)}
       />
       <ContactList contacts={contacts} getContactId={removeContactHandler} />
     </div>

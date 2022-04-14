@@ -1,4 +1,5 @@
 import React from "react";
+import { ListGroup } from "react-bootstrap";
 import ContactCard from "./ContactCard";
 
 const ContactList = (props) => {
@@ -16,7 +17,7 @@ const ContactList = (props) => {
     );
   });
 
-  return <div className="ui celled list">{renderContactList}</div>;
+  return <ListGroup>{renderContactList}</ListGroup>;
 };
 
 export default ContactList;
