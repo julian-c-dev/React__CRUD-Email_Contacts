@@ -1,5 +1,6 @@
 import React from "react";
-import { ListGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { ListGroup, Button } from "react-bootstrap";
 import ContactCard from "./ContactCard";
 
 const ContactList = (props) => {
@@ -17,7 +18,20 @@ const ContactList = (props) => {
     );
   });
 
-  return <ListGroup>{renderContactList}</ListGroup>;
+  return (
+    <React.Fragment>
+      <h2>
+        Contact List
+        <Link to="/add">
+          <Button variant="primary" type="button" className="m-3">
+            Add Contact
+          </Button>
+        </Link>
+      </h2>
+
+      <ListGroup>{renderContactList}</ListGroup>
+    </React.Fragment>
+  );
 };
 
 export default ContactList;

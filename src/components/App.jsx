@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import AddContact from "./AddContact";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import ContactList from "./ContactList";
 import Header from "./Header";
+import ContactDetail from "./ContactDetail";
 
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
@@ -37,11 +38,32 @@ function App() {
 
   return (
     <div className="container">
-      <Header />
-      <AddContact
-        onAddButtonSubmit={(name, email) => addContactHandler(name, email)}
-      />
-      <ContactList contacts={contacts} getContactId={removeContactHandler} />
+      <Router>
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ContactList
+                contacts={contacts}
+                getContactId={removeContactHandler}
+              />
+            }
+          />
+          <Route
+            path="/add"
+            element={
+              <AddContact
+                onAddButtonSubmit={(name, email) =>
+                  addContactHandler(name, email)
+                }
+              />
+            }
+          />
+
+          <Route path="/contact/:id" element={<ContactDetail />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

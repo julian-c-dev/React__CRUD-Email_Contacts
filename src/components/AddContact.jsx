@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const AddContact = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  let navigate = useNavigate();
 
   const add = (e) => {
     e.preventDefault();
@@ -14,6 +16,7 @@ const AddContact = (props) => {
     props.onAddButtonSubmit(name, email);
     setName("");
     setEmail("");
+    navigate("/", { replace: true });
   };
 
   return (

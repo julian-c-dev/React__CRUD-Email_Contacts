@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ListGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -18,8 +19,13 @@ const ContactCard = (props) => {
         alt="avatar"
       />
       <div className="ms-4 me-auto">
-        <div className="fw-bold">{name}</div>
-        <div>{email}</div>
+        <Link
+          to={`/contact/${id}`}
+          style={{ color: "black", textDecoration: "none" }}
+        >
+          <div className="fw-bold">{name}</div>
+          <div>{email}</div>
+        </Link>
       </div>
       <div>
         <FontAwesomeIcon
