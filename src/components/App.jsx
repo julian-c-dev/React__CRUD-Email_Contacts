@@ -61,7 +61,10 @@ function App() {
             }
           />
 
-          <Route path="/contact/:id" element={<ContactDetail />} />
+          <Route
+            path="/contact/:id"
+            element={<ContactDetail contacts={contacts} />}
+          />
         </Routes>
       </Router>
     </div>

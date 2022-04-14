@@ -21,6 +21,9 @@ const ContactCard = (props) => {
       <div className="ms-4 me-auto">
         <Link
           to={`/contact/${id}`}
+          state={{
+            contacts: props.contact,
+          }}
           style={{ color: "black", textDecoration: "none" }}
         >
           <div className="fw-bold">{name}</div>

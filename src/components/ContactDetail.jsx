@@ -1,18 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { ListGroup } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-
-import "./ContactCard.css";
+import { Link, useLocation } from "react-router-dom";
+import { Button, Card } from "react-bootstrap";
+import "./ContactDetail.css";
 
 const ContactDetail = (props) => {
+  const params = useLocation();
+  const { name, email } = params.state.contacts;
+
   return (
-    <div>
-      <div>
-        <div>Hello </div>
-      </div>
-    </div>
+    <Card className="text-center m-4">
+      <Card.Header as="h4">Contact Detail</Card.Header>
+      <Card.Body>
+        <Card.Img
+          variant="top"
+          className="avatarDetail"
+          src={"https://i.pravatar.cc/150?u=julian_cantera"}
+        />
+        <Card.Title as="h3">{name}</Card.Title>
+        <Card.Text>{email}</Card.Text>
+        <Link to={`/`}>
+          <Button variant="primary">Return </Button>
+        </Link>
+      </Card.Body>
+    </Card>
   );
 };
 
