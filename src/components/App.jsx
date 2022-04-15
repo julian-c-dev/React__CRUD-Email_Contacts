@@ -16,11 +16,14 @@ function App() {
     return response.data;
   };
 
-  const addContactHandler = (name, email) => {
-    setContacts([
-      ...contacts,
-      { id: Math.floor(Math.random() * 100000), name, email },
-    ]);
+  const addContactHandler = async (name, email) => {
+    const request = {
+      id: Math.floor(Math.random() * 100000),
+      name,
+      email,
+    };
+    const response = await api.post("/contacts", request);
+    setContacts([...contacts, response.data]);
   };
 
   const removeContactHandler = (id) => {
