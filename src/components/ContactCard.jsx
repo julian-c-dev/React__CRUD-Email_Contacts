@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ListGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import "./ContactCard.css";
 
@@ -28,6 +28,19 @@ const ContactCard = (props) => {
         >
           <div className="fw-bold">{name}</div>
           <div>{email}</div>
+        </Link>
+      </div>
+      <div>
+        <Link
+          to={`/edit/${id}`}
+          state={{
+            contacts: props.contacts,
+          }}
+        >
+          <FontAwesomeIcon
+            icon={faEdit}
+            style={{ color: "blue", cursor: "pointer", marginRight: "10px" }}
+          />
         </Link>
       </div>
       <div>
