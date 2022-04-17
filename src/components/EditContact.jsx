@@ -4,15 +4,18 @@ import { useParams, useNavigate } from "react-router-dom";
 
 const EditContact = (props) => {
   const { id } = useParams();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  let navigate = useNavigate();
   const { contacts } = props;
-
   const contactEdit = contacts.filter((contact) => contact.id === Number(id));
+  const [name, setName] = useState(contactEdit[0].name);
+  const [email, setEmail] = useState(contactEdit[0].email);
+  let navigate = useNavigate();
 
   const update = (e) => {
     e.preventDefault();
+    if (name === "" || email === "") {
+      alert("All the fields are mandatory");
+      return;
+    }
     const contact = { id, name, email };
     props.onUpdateContactHandler(contact);
     navigate("/", { replace: true });
@@ -28,6 +31,7 @@ const EditContact = (props) => {
             type="text"
             name="name"
             placeholder={contactEdit[0].name}
+            defaultValue={contactEdit[0].name}
             onChange={(e) => setName(e.target.value)}
           />
         </Form.Group>
@@ -37,6 +41,7 @@ const EditContact = (props) => {
             type="text"
             email="email"
             placeholder={contactEdit[0].email}
+            defaultValue={contactEdit[0].email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
