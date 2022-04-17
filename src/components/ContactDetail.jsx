@@ -5,7 +5,7 @@ import "./ContactDetail.css";
 
 const ContactDetail = (props) => {
   const params = useLocation();
-  const { name, email } = params.state.contacts;
+  const { id, name, email } = params.state.contacts;
 
   return (
     <Card className="text-center m-4">
@@ -14,7 +14,7 @@ const ContactDetail = (props) => {
         <Card.Img
           variant="top"
           className="avatarDetail"
-          src={"https://i.pravatar.cc/150?u=julian_cantera"}
+          src={`https://i.pravatar.cc/150?u=${id}`}
         />
         <Card.Title as="h3">{name}</Card.Title>
         <Card.Text>{email}</Card.Text>

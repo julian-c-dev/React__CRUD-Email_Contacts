@@ -49,7 +49,7 @@ const ContactList = (props) => {
       <ListGroup>
         {renderContactList.length > 0
           ? renderContactList
-          : "Search unsuccessful, no contacts found.. "}
+          : "No contacts found."}
       </ListGroup>
     </React.Fragment>
   );
