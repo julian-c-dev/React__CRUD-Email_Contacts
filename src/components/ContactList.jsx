@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import { ListGroup, Button } from "react-bootstrap";
+import { ListGroup, Button, Form } from "react-bootstrap";
 import ContactCard from "./ContactCard";
 
 const ContactList = (props) => {
+  const inputElement = useRef("");
   const deleteContactHandler = (id) => {
     props.getContactId(id);
   };
@@ -18,6 +19,10 @@ const ContactList = (props) => {
     );
   });
 
+  const getSearchTerm = () => {
+    props.searchKeyword(inputElement.current.value);
+  };
+
   return (
     <React.Fragment>
       <h2>
@@ -27,9 +32,25 @@ const ContactList = (props) => {
             Add Contact
           </Button>
         </Link>
+        <Form>
+          <Form.Group className="card-body" controlId="formBasicName">
+            <Form.Control
+              ref={inputElement}
+              type="text"
+              name="search"
+              placeholder="Search Contact"
+              value={props.term}
+              onChange={getSearchTerm}
+            />
+          </Form.Group>
+        </Form>
       </h2>
 
-      <ListGroup>{renderContactList}</ListGroup>
+      <ListGroup>
+        {renderContactList.length > 0
+          ? renderContactList
+          : "Search unsuccessful, no contacts found.. "}
+      </ListGroup>
     </React.Fragment>
   );
 };
