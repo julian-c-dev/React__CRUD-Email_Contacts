@@ -15,7 +15,7 @@ const ContactCard = (props) => {
     >
       <img
         className="avatar"
-        src={"https://i.pravatar.cc/150?u=julian_cantera"}
+        src={`https://i.pravatar.cc/150?u=${id}`}
         alt="avatar"
       />
       <div className="ms-4 me-auto">
