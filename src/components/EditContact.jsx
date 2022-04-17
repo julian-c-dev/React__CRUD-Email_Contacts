@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import "./App.css";
 
 const EditContact = (props) => {
   const { id } = useParams();
@@ -22,7 +23,7 @@ const EditContact = (props) => {
   };
 
   return (
-    <div className="card">
+    <div className="card card-size centered">
       <h2 className="card-header">Edit Contact</h2>
       <Form onSubmit={update}>
         <Form.Group className="card-body" controlId="formBasicName">
@@ -49,6 +50,9 @@ const EditContact = (props) => {
           <Button variant="primary" type="submit">
             Update
           </Button>
+          <Link style={{ marginLeft: "1rem" }} to={`/`}>
+            <Button variant="secondary">Return </Button>
+          </Link>
         </Form.Group>
       </Form>
     </div>

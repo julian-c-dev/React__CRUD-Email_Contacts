@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "./App.css";
 
 const AddContact = (props) => {
   const [name, setName] = useState("");
@@ -20,7 +21,7 @@ const AddContact = (props) => {
   };
 
   return (
-    <div className="card">
+    <div className="card card-size centered">
       <h2 className="card-header">Add Contact</h2>
       <Form onSubmit={add}>
         <Form.Group className="card-body" controlId="formBasicName">
@@ -36,7 +37,7 @@ const AddContact = (props) => {
         <Form.Group className=" card-body" controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control
-            type="text"
+            type="email"
             email="email"
             placeholder="Email"
             value={email}
@@ -47,6 +48,9 @@ const AddContact = (props) => {
           <Button variant="primary" type="submit">
             Add Contact
           </Button>
+          <Link style={{ marginLeft: "1rem" }} to={`/`}>
+            <Button variant="secondary">Return </Button>
+          </Link>
         </Form.Group>
       </Form>
     </div>

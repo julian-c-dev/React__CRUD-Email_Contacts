@@ -3,3 +3,8 @@
   border-radius: 50%;
   border: 1px solid silver;
 }
+.custom {
+  width: 40rem;
+  margin: 0 auto;
+  gap: 0.5rem;
+}

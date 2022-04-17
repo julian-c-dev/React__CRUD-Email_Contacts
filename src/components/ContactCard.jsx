@@ -11,7 +11,8 @@ const ContactCard = (props) => {
   return (
     <ListGroup.Item
       as="li"
-      className="d-flex justify-content-start align-items-center"
+      className="custom d-flex justify-content-start align-items-center"
+      style={{ backgroundColor: "rgb(225, 238, 240)" }}
     >
       <img
         className="avatar"

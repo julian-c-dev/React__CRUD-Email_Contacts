@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ListGroup, Button, Form } from "react-bootstrap";
 import ContactCard from "./ContactCard";
+import "./ContactList.css";
+import "./App.css";
 
 const ContactList = (props) => {
   const inputElement = useRef("");
@@ -25,7 +27,7 @@ const ContactList = (props) => {
 
   return (
     <React.Fragment>
-      <h2>
+      <h2 className="centered card-size">
         Contact List
         <Link to="/add">
           <Button variant="primary" type="button" className="m-3">
@@ -33,7 +35,7 @@ const ContactList = (props) => {
           </Button>
         </Link>
         <Form>
-          <Form.Group className="card-body" controlId="formBasicName">
+          <Form.Group className="searchBar card-body" controlId="formBasicName">
             <Form.Control
               ref={inputElement}
               type="text"
